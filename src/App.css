@@ -1,0 +1,186 @@
+/*
+ * Copyright (c) 2009, 2010, 2011, 2012 Brent Weston Robinett <bwrobinett@gmail.com>
+ * Licensed under the MIT License:http://www.opensource.org/licenses/mit-license.php
+ */
+body,
+html,
+#calcWrapperTable {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-size: 17px;
+  font-family: monospace;
+  color: #123272;
+  overflow: hidden;
+}
+ul {
+  list-style-type: none;
+  margin-left: -15px;
+}
+#calcWrapper {
+  position: absolute;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0px;
+}
+/*
+    Header
+  */
+#headerWrapper {
+  margin: 3px;
+}
+#chromeyCalcName {
+  position: absolute;
+  margin: 20px 0px 0px 6px;
+  font-family: courier, monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3c5481;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px #ccc;
+  cursor: pointer;
+}
+#chromeyCalcPageLink {
+  text-decoration: none;
+}
+#headerLinks {
+  position: relative;
+  float: right;
+  height: 38px;
+  margin-right: 2px;
+  font-size: 13px;
+  font-family: arial, sans-serif;
+  color: #1d1ece;
+}
+.headerLink,
+.headerSeparator {
+  position: relative;
+  float: right;
+}
+.headerSeparator {
+  margin: 0 3px;
+}
+.headerLink {
+  color: #1d1ece;
+}
+.headerLink:visited {
+  color: #1d1ece;
+}
+#popOut {
+  text-decoration: none;
+  margin-left: -1px;
+  margin-top: -2px;
+}
+/* Result */
+#calcResultsWrapper {
+  position: relative;
+  margin: 1px 8px;
+  font-family: times, serif;
+  background-color: rgba(221, 234, 249, 0.5);
+  border: solid #3e5785 1px;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 0px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+#calcResultsWrapper,
+#calcResultsWrapperCell {
+  height: 100%;
+}
+.outputText,
+.inputText,
+.replacedInputText,
+.errorInputText,
+.errorOutputText,
+.inputTextWithVars,
+.replacedVarAssignmentInputText,
+.varAssignmentInputText,
+.varAssignmentOutputText {
+  cursor: pointer;
+}
+.inputText,
+.outputText {
+  position: relative;
+  line-break: anywhere;
+  word-wrap: break-word;
+}
+.resultLink {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: -21px;
+  width: 17px;
+  color: #3e5785;
+  opacity: 0.6;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+.resultLink:hover {
+  color: #1d1ece;
+  opacity: 1;
+  text-decoration: underline;
+}
+.result {
+  position: relative;
+  font-size: 16px;
+  margin-left: -25px;
+  border-left: solid 25px transparent;
+  border-right: solid 25px transparent;
+}
+.input {
+  color: grey;
+}
+.output {
+  margin-bottom: 10px;
+}
+.errorOutputText {
+  font-style: normal;
+}
+.replacedInputText,
+.replacedVarAssignmentInputText {
+  text-decoration: line-through;
+}
+/* Input */
+#calcInput {
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  padding: 2px;
+  padding-left: 22px;
+  border: solid #3e5785 1px;
+  background-color: #ddeaf9;
+  font-family: Courier, monospace, 'Courier New';
+  font-size: 16px;
+  color: black;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 3px black;
+}
+#calcInputWrapper {
+  position: relative;
+  margin: 7px 8px 6px;
+}
+#calcInputInnerWrapper {
+  position: relative;
+}
+#inputMarker {
+  position: absolute;
+  left: 8px;
+  bottom: 2.5px;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Courier, monospace, 'Courier New';
+  color: #3e5785;
+}
+#calcWrapper {
+  position: relative;
+  width: 450px;
+  height: 600px;
+}
