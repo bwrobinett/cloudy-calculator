@@ -12,6 +12,8 @@ import {
   initCalculator,
   selectLastCleared,
   selectResultHistory,
+  selectZoomLevel,
+  zoomAction,
 } from '../calculator'
 import {
   convertBaseCalculator,
@@ -49,6 +51,7 @@ export const CloudyCalculator: FC = () => {
   const dispatch = useCalculatorDispatch()
   const resultHistory = useSelector(selectResultHistory)
   const lastCleared = useSelector(selectLastCleared)
+  const zoomLevel = useSelector(selectZoomLevel) || 100
   const resultsWrapperRef = useRef<HTMLDivElement>(null)
   const ResultItemMemo = memo(ResultItem)
   const [wasCleared, setWasCleared] = useState(false)
@@ -123,6 +126,22 @@ export const CloudyCalculator: FC = () => {
     }
   }, [wasCleared])
 
+  // -------------------
+  // Zoom in or out
+  useEffect(() => {
+    const resultsElem = document.getElementById('calcResults')
+    if (resultsElem) {
+      // Change zoom level
+      resultsElem.style['fontSize'] = `${zoomLevel}%`
+
+      // Scroll to bottom
+      const resultsWrapper = resultsWrapperRef.current
+      if (resultsWrapper instanceof HTMLDivElement) {
+        resultsWrapper.scrollTop = resultsWrapper.scrollHeight
+      }
+    }
+  }, [zoomLevel])
+
   // ========================================
   // HANDLERS
 
@@ -130,6 +149,20 @@ export const CloudyCalculator: FC = () => {
   const handleClear = () => {
     dispatch(clearCalculatorAction())
     setWasCleared(true)
+  }
+
+  // Makes results bigger
+  const handleBigger = () => {
+    if (zoomLevel < 200) {
+      dispatch(zoomAction(zoomLevel + 10))
+    }
+  }
+
+  // Makes results smaller
+  const handleSmaller = () => {
+    if (zoomLevel > 75) {
+      dispatch(zoomAction(zoomLevel - 10))
+    }
   }
 
   // ========================================
@@ -164,6 +197,24 @@ export const CloudyCalculator: FC = () => {
                         onClick={handleClear}
                       >
                         Clear
+                      </a>
+                      <span className="headerSeparator">|</span>
+                      <a
+                        href="#bigger"
+                        id="bigger"
+                        className="headerLink"
+                        onClick={handleBigger}
+                      >
+                        Bigger
+                      </a>
+                      <span className="headerSeparator">|</span>
+                      <a
+                        href="#smaller"
+                        id="smaller"
+                        className="headerLink"
+                        onClick={handleSmaller}
+                      >
+                        Smaller
                       </a>
                     </div>
                     <a

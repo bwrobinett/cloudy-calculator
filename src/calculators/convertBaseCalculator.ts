@@ -128,6 +128,7 @@ function baseToRadix(baseName: string) {
 
     // Roman
     case 'roman':
+    case 'rom':
       return 'roman'
   }
 

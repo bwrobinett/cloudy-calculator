@@ -3,6 +3,7 @@
 export const CALCULATE = 'Calculator:CALCULATE'
 export const INIT = 'Calculator:INIT'
 export const CLEAR = 'Calculator:CLEAR'
+export const ZOOM = 'Calculator:ZOOM'
 export const UPDATE_INPUT = 'Calculator:UPDATE_INPUT'
 export const UPDATE_INPUT_SELECTION = 'Calculator:UPDATE_INPUT_SELECTION'
 export const COPY_TO_INPUT = 'Calculator:COPY_TO_INPUT'
@@ -22,6 +23,7 @@ export type CalculationActionType =
   | typeof PREVIOUS_INPUT
   | typeof SYNC_HISTORY
   | typeof DEFAULT
+  | typeof ZOOM
 
 /** ==== ACTION SHAPES ==== */
 
@@ -76,6 +78,11 @@ export interface SyncHistoryAction {
   payload: CalculatorState
 }
 
+export interface ZoomAction {
+  type: typeof ZOOM
+  payload: number
+}
+
 export type CalculatorAction =
   | CalculateAction
   | InitCalculatorAction
@@ -86,6 +93,7 @@ export type CalculatorAction =
   | NextInputAction
   | PreviousInputAction
   | SyncHistoryAction
+  | ZoomAction
 
 /** ==== STATE SHAPES ==== */
 
@@ -96,6 +104,7 @@ export interface CalculatorState {
   resultHistory: CalculatedResult[]
   historyIndex: number
   lastCleared?: number
+  zoomLevel: number
 }
 
 export interface CalculatedResult {

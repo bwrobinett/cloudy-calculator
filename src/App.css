@@ -72,10 +72,14 @@ ul {
 .headerLink:visited {
   color: #1d1ece;
 }
-#popOut {
+#clearAll {
   text-decoration: none;
-  margin-left: -1px;
-  margin-top: -2px;
+}
+#bigger {
+  text-decoration: none;
+}
+#smaller {
+  text-decoration: none;
 }
 /* Result */
 #calcResultsWrapper {
@@ -88,6 +92,8 @@ ul {
   border-radius: 0px;
   overflow: auto;
   word-wrap: break-word;
+  box-sizing: border-box;
+  padding: 5px 0px;
 }
 #calcResultsWrapper,
 #calcResultsWrapperCell {
@@ -104,42 +110,24 @@ ul {
 .varAssignmentOutputText {
   cursor: pointer;
 }
+#calcResults {
+  font-size: 16px;
+}
 .inputText,
 .outputText {
   position: relative;
   line-break: anywhere;
   word-wrap: break-word;
 }
-.resultLink {
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: -21px;
-  width: 17px;
-  color: #3e5785;
-  opacity: 0.6;
-  font-family: Georgia, serif;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-}
-.resultLink:hover {
-  color: #1d1ece;
-  opacity: 1;
-  text-decoration: underline;
-}
 .result {
   position: relative;
-  font-size: 16px;
   margin-left: -25px;
   border-left: solid 25px transparent;
   border-right: solid 25px transparent;
+  margin-top: inherit;
 }
 .input {
   color: grey;
-}
-.output {
-  margin-bottom: 10px;
 }
 .errorOutputText {
   font-style: normal;

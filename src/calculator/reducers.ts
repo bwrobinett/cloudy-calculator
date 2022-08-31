@@ -11,6 +11,7 @@ import {
   SYNC_HISTORY,
   UPDATE_INPUT,
   UPDATE_INPUT_SELECTION,
+  ZOOM,
 } from './types'
 
 // ========================================
@@ -31,6 +32,13 @@ export function calculatorReducer(
     // Clear everything other than current input
     case CLEAR:
       return clearOutputHistory(state)
+
+    // Clear everything other than current input
+    case ZOOM:
+      return {
+        ...state,
+        zoomLevel: action.payload,
+      }
 
     // Update calculator with result of a calculation
     case CALCULATE:
@@ -96,6 +104,7 @@ export function initialState(): CalculatorState {
     inputSelectionEnd: null,
     resultHistory: [],
     historyIndex: 0,
+    zoomLevel: 100,
   }
 }
 
@@ -263,4 +272,11 @@ export function selectInputSelection(state: CalculatorState) {
     inputSelectionStart: state.inputSelectionStart || 0,
     inputSelectionEnd: state.inputSelectionEnd || 0,
   }
+}
+
+/**
+ * Selects input selection (used when inserting input or output results)
+ */
+export function selectZoomLevel(state: CalculatorState) {
+  return state.zoomLevel
 }
