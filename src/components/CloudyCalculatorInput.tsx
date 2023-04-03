@@ -1,17 +1,13 @@
 import { FC, KeyboardEvent, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { useCalculatorDispatch } from '.'
 import {
   calculateAction,
   calculateResult,
   clearCalculatorAction,
-  NEXT_INPUT,
-  PREVIOUS_INPUT,
-  selectInputFromHistory as selectInputText,
   selectInputSelection,
-  UPDATE_INPUT,
-  UPDATE_INPUT_SELECTION,
+  selectInputText,
 } from '../calculator'
+import { useCalculatorDispatch } from './useCalculatorDispatch'
 
 /**
  * Renders the calculator input
@@ -84,13 +80,13 @@ export const CloudyCalculatorInput: FC = () => {
       }
       case 'ArrowUp': {
         // Update input text to previous input from history
-        dispatch({ type: PREVIOUS_INPUT })
+        dispatch({ type: 'PREVIOUS_INPUT' })
         e.preventDefault()
         return
       }
       case 'ArrowDown': {
         // Update input text to next input from history
-        dispatch({ type: NEXT_INPUT })
+        dispatch({ type: 'NEXT_INPUT' })
         e.preventDefault()
         return
       }
@@ -107,7 +103,7 @@ export const CloudyCalculatorInput: FC = () => {
 
     const inputElem = inputRef.current
     dispatch({
-      type: UPDATE_INPUT,
+      type: 'UPDATE_INPUT',
       payload: {
         input: inputElem.value,
         inputSelectionStart: inputElem.selectionStart,
@@ -123,7 +119,7 @@ export const CloudyCalculatorInput: FC = () => {
 
     const inputElem = inputRef.current
     dispatch({
-      type: UPDATE_INPUT_SELECTION,
+      type: 'UPDATE_INPUT_SELECTION',
       payload: {
         inputSelectionStart: inputElem.selectionStart,
         inputSelectionEnd: inputElem.selectionEnd,

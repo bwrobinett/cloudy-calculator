@@ -1,21 +1,7 @@
-import {
-  CALCULATE,
-  CalculatorAction,
-  CalculatorState,
-  CLEAR,
-  CopyToInputAction,
-  COPY_TO_INPUT,
-  INIT,
-  NEXT_INPUT,
-  PREVIOUS_INPUT,
-  SYNC_HISTORY,
-  UPDATE_INPUT,
-  UPDATE_INPUT_SELECTION,
-  ZOOM,
-} from './types'
-
 // ========================================
 // REDUCERS
+
+import { CalculatorAction, CalculatorState, CopyToInputAction } from './types'
 
 /**
  * Generates a new calculator state
@@ -26,22 +12,22 @@ export function calculatorReducer(
 ): CalculatorState {
   switch (action.type) {
     // Initialize calculator
-    case INIT:
+    case 'INIT':
       return action.payload || initialState()
 
     // Clear everything other than current input
-    case CLEAR:
+    case 'CLEAR':
       return clearOutputHistory(state)
 
     // Clear everything other than current input
-    case ZOOM:
+    case 'ZOOM':
       return {
         ...state,
         zoomLevel: action.payload,
       }
 
     // Update calculator with result of a calculation
-    case CALCULATE:
+    case 'CALCULATE':
       // Make sure result history doesn't get too big
       const newResultHistory = [
         ...state.resultHistory.slice(-1000),
@@ -56,33 +42,33 @@ export function calculatorReducer(
       }
 
     // Update current input value
-    case UPDATE_INPUT:
+    case 'UPDATE_INPUT':
       return {
         ...state,
         ...action.payload,
         historyIndex: state.resultHistory.length,
       }
 
-    case COPY_TO_INPUT:
+    case 'COPY_TO_INPUT':
       return copyToInput(state, action)
 
     // Update current input selection
-    case UPDATE_INPUT_SELECTION:
+    case 'UPDATE_INPUT_SELECTION':
       return {
         ...state,
         ...action.payload,
       }
 
     // Arrow down
-    case NEXT_INPUT:
+    case 'NEXT_INPUT':
       return nextInput(state)
 
     // Arrow up
-    case PREVIOUS_INPUT:
+    case 'PREVIOUS_INPUT':
       return previousInput(state)
 
     // Arrow up
-    case SYNC_HISTORY:
+    case 'SYNC_HISTORY':
       return syncHistory(state, action.payload)
 
     // Do nothing
@@ -145,7 +131,7 @@ function copyToInput(
 }
 
 /**
- * Handles NEXT_INPUT action
+ * Handles 'NEXT_INPUT' action
  */
 function nextInput(state: CalculatorState): CalculatorState {
   const { input, historyIndex, resultHistory } = state
@@ -171,7 +157,7 @@ function nextInput(state: CalculatorState): CalculatorState {
 }
 
 /**
- * Handles PREVIOUS_INPUT action
+ * Handles 'PREVIOUS_INPUT' action
  */
 function previousInput(state: CalculatorState): CalculatorState {
   const { input, historyIndex, resultHistory } = state

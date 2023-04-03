@@ -1,48 +1,36 @@
 /** ==== ACTION TYPES ==== */
 
-export const CALCULATE = 'Calculator:CALCULATE'
-export const INIT = 'Calculator:INIT'
-export const CLEAR = 'Calculator:CLEAR'
-export const ZOOM = 'Calculator:ZOOM'
-export const UPDATE_INPUT = 'Calculator:UPDATE_INPUT'
-export const UPDATE_INPUT_SELECTION = 'Calculator:UPDATE_INPUT_SELECTION'
-export const COPY_TO_INPUT = 'Calculator:COPY_TO_INPUT'
-export const NEXT_INPUT = 'Calculator:NEXT_INPUT'
-export const PREVIOUS_INPUT = 'Calculator:PREVIOUS_INPUT'
-export const SYNC_HISTORY = 'Calculator:SYNC_HISTORY'
-export const DEFAULT = 'Calculator:DEFAULT'
-
 export type CalculationActionType =
-  | typeof CALCULATE
-  | typeof INIT
-  | typeof CLEAR
-  | typeof UPDATE_INPUT
-  | typeof UPDATE_INPUT_SELECTION
-  | typeof COPY_TO_INPUT
-  | typeof NEXT_INPUT
-  | typeof PREVIOUS_INPUT
-  | typeof SYNC_HISTORY
-  | typeof DEFAULT
-  | typeof ZOOM
+  | 'CALCULATE'
+  | 'INIT'
+  | 'CLEAR'
+  | 'UPDATE_INPUT'
+  | 'UPDATE_INPUT_SELECTION'
+  | 'COPY_TO_INPUT'
+  | 'NEXT_INPUT'
+  | 'PREVIOUS_INPUT'
+  | 'SYNC_HISTORY'
+  | 'DEFAULT'
+  | 'ZOOM'
 
 /** ==== ACTION SHAPES ==== */
 
 export interface InitCalculatorAction {
-  type: typeof INIT
+  type: 'INIT'
   payload?: CalculatorState
 }
 
 export interface ClearCalculatorAction {
-  type: typeof CLEAR
+  type: 'CLEAR'
 }
 
 export interface CalculateAction {
-  type: typeof CALCULATE
+  type: 'CALCULATE'
   payload: CalculatedResult
 }
 
 export interface UpdateInputAction {
-  type: typeof UPDATE_INPUT
+  type: 'UPDATE_INPUT'
   payload: {
     input: string
     inputSelectionStart: number | null
@@ -51,7 +39,7 @@ export interface UpdateInputAction {
 }
 
 export interface UpdateInputSelectionAction {
-  type: typeof UPDATE_INPUT_SELECTION
+  type: 'UPDATE_INPUT_SELECTION'
   payload: {
     inputSelectionStart: number | null
     inputSelectionEnd: number | null
@@ -59,27 +47,27 @@ export interface UpdateInputSelectionAction {
 }
 
 export interface CopyToInputAction {
-  type: typeof COPY_TO_INPUT
+  type: 'COPY_TO_INPUT'
   payload: {
     text: string
   }
 }
 
 export interface NextInputAction {
-  type: typeof NEXT_INPUT
+  type: 'NEXT_INPUT'
 }
 
 export interface PreviousInputAction {
-  type: typeof PREVIOUS_INPUT
+  type: 'PREVIOUS_INPUT'
 }
 
 export interface SyncHistoryAction {
-  type: typeof SYNC_HISTORY
+  type: 'SYNC_HISTORY'
   payload: CalculatorState
 }
 
 export interface ZoomAction {
-  type: typeof ZOOM
+  type: 'ZOOM'
   payload: number
 }
 

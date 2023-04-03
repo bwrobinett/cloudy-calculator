@@ -1,14 +1,8 @@
 import { FC, memo, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import {
-  CloudyCalculatorInput,
-  CloudyCalculatorResult,
-  useCalculatorDispatch,
-} from '.'
-import {
   CalculatedResult,
   clearCalculatorAction,
-  INIT,
   initCalculator,
   selectLastCleared,
   selectResultHistory,
@@ -19,11 +13,16 @@ import {
   convertBaseCalculator,
   mathJsCalculator,
   mathJsCAS,
+  mathJsParser,
+  resetVariables,
   specialCommands,
   tinyColorCalculator,
 } from '../calculators'
-import { mathJsParser, resetVariables } from '../calculators/calculatorsCommon'
+
 import { calculatorStorage } from './calculatorStorage'
+import { CloudyCalculatorInput } from './CloudyCalculatorInput'
+import { CloudyCalculatorResult } from './CloudyCalculatorResult'
+import { useCalculatorDispatch } from './useCalculatorDispatch'
 
 /**
  * Initialize the main calculator with calculators in priority order
@@ -80,7 +79,7 @@ export const CloudyCalculator: FC = () => {
             return
           }
         })
-        dispatch({ type: INIT, payload: state })
+        dispatch({ type: 'INIT', payload: state })
       }
     })
   }, [])

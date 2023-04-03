@@ -1,5 +1,5 @@
 import deepEqual from 'deep-equal'
-import { CalculatorState, SYNC_HISTORY } from '../calculator'
+import { CalculatorState } from '../calculator'
 import { store } from '../store'
 import { storage, StorageChangeHandler } from '../utilities'
 
@@ -18,7 +18,7 @@ store.subscribe(() => {
 calculatorStorage.onChanged(({ newValue }) => {
   if (newValue && !deepEqual(newValue, store.getState())) {
     store.dispatch({
-      type: SYNC_HISTORY,
+      type: 'SYNC_HISTORY',
       payload: newValue,
     })
   }

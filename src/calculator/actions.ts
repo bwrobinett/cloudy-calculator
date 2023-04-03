@@ -1,10 +1,7 @@
 import {
-  CALCULATE,
   CalculateAction,
   CalculatedResult,
-  CLEAR,
   ClearCalculatorAction,
-  ZOOM,
   ZoomAction,
 } from './types'
 
@@ -13,7 +10,7 @@ import {
  */
 export function calculateAction(result: CalculatedResult): CalculateAction {
   return {
-    type: CALCULATE,
+    type: 'CALCULATE',
     payload: result,
   }
 }
@@ -23,7 +20,7 @@ export function calculateAction(result: CalculatedResult): CalculateAction {
  */
 export function clearCalculatorAction(): ClearCalculatorAction {
   return {
-    type: CLEAR,
+    type: 'CLEAR',
   }
 }
 
@@ -32,7 +29,7 @@ export function clearCalculatorAction(): ClearCalculatorAction {
  */
 export function zoomAction(level = 100): ZoomAction {
   return {
-    type: ZOOM,
+    type: 'ZOOM',
     payload: level,
   }
 }

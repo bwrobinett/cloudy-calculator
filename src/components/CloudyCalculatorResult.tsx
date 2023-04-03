@@ -1,10 +1,6 @@
 import { FC } from 'react'
-import { CalculatedResult, COPY_TO_INPUT } from '../calculator/types'
+import { CalculatedResult } from '../calculator'
 import { useCalculatorDispatch } from './useCalculatorDispatch'
-
-interface Props {
-  result: CalculatedResult
-}
 
 /**
  * Render the result of a calculation
@@ -29,7 +25,7 @@ export const CloudyCalculatorResult: FC<CalculatedResult> = (result) => {
             // Inserts result input text into calculator input area
             input &&
             dispatch({
-              type: COPY_TO_INPUT,
+              type: 'COPY_TO_INPUT',
               payload: { text: input },
             })
           }
@@ -44,7 +40,7 @@ export const CloudyCalculatorResult: FC<CalculatedResult> = (result) => {
             // Inserts result output text into calculator input area
             output &&
             dispatch({
-              type: COPY_TO_INPUT,
+              type: 'COPY_TO_INPUT',
               payload: { text: output },
             })
           }
