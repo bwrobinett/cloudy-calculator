@@ -4,6 +4,7 @@ import { useCalculatorDispatch } from '.'
 import {
   calculateAction,
   calculateResult,
+  clearCalculatorAction,
   NEXT_INPUT,
   PREVIOUS_INPUT,
   selectInputFromHistory as selectInputText,
@@ -62,6 +63,14 @@ export const CloudyCalculatorInput: FC = () => {
     }
 
     switch (e.key) {
+      case 'k': {
+        if (e.metaKey || e.ctrlKey) {
+          // Clear for ctrl+k or cmd+k
+          dispatch(clearCalculatorAction())
+        }
+
+        return
+      }
       case 'Enter': {
         // Do nothing if input is blank
         if (inputText === '') {
