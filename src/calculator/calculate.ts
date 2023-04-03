@@ -40,10 +40,28 @@ export const calculateResult = async (
 
     if (output !== '' && output != null) {
       // Result found (YAY)
-      return { ...defaultResult, output, calculator: name }
+      return {
+        ...defaultResult,
+        output: makeNumbersLookNicer(output),
+        calculator: name,
+      }
     }
   }
 
   // No result found (SAD)
   return defaultResult
+}
+
+/**
+ * Try to fix it so we don't get goofy results when calculating things like 2.01 - 2.0
+ */
+function makeNumbersLookNicer(output: string) {
+  const precision = 13
+  const outputIsNumber = /^[+-]?\d+[.]?\d*e?[+-]?\d+$/.test(output)
+  if (outputIsNumber) {
+    // Convert output to number of given precision, then back to string
+    return Number(parseFloat(output).toPrecision(precision)).toString()
+  }
+
+  return output
 }
