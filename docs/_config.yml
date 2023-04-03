@@ -3,6 +3,7 @@ plugins:
 relative_links:
   enabled: true
   collections: true
+theme: slate
 include:
   - README.md
   - CLOUDY.md
