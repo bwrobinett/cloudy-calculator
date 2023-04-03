@@ -1,9 +1,7 @@
 import { FC, KeyboardEvent, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import {
-  calculateAction,
   calculateResult,
-  clearCalculatorAction,
   selectInputSelection,
   selectInputText,
 } from '../calculator'
@@ -62,7 +60,7 @@ export const CloudyCalculatorInput: FC = () => {
       case 'k': {
         if (e.metaKey || e.ctrlKey) {
           // Clear for ctrl+k or cmd+k
-          dispatch(clearCalculatorAction())
+          dispatch({ type: 'CLEAR' })
         }
 
         return
@@ -75,7 +73,7 @@ export const CloudyCalculatorInput: FC = () => {
 
         // Calculate result
         const output = await calculateResult(inputText)
-        dispatch(calculateAction(output))
+        dispatch({ type: 'CALCULATE', payload: output })
         return
       }
       case 'ArrowUp': {

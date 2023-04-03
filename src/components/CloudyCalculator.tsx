@@ -2,12 +2,10 @@ import { FC, memo, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import {
   CalculatedResult,
-  clearCalculatorAction,
   initCalculator,
   selectLastCleared,
   selectResultHistory,
   selectZoomLevel,
-  zoomAction,
 } from '../calculator'
 import {
   convertBaseCalculator,
@@ -105,7 +103,7 @@ export const CloudyCalculator: FC = () => {
 
     const { input } = lastResult
     if (input === 'clear' && lastResult.timestamp > lastCleared) {
-      dispatch(clearCalculatorAction())
+      dispatch({ type: 'CLEAR' })
       setWasCleared(true)
       return
     }
@@ -146,21 +144,21 @@ export const CloudyCalculator: FC = () => {
 
   // Clears all calculations
   const handleClear = () => {
-    dispatch(clearCalculatorAction())
+    dispatch({ type: 'CLEAR' })
     setWasCleared(true)
   }
 
   // Makes results bigger
   const handleBigger = () => {
     if (zoomLevel < 200) {
-      dispatch(zoomAction(zoomLevel + 10))
+      dispatch({ type: 'ZOOM', payload: zoomLevel + 10 })
     }
   }
 
   // Makes results smaller
   const handleSmaller = () => {
     if (zoomLevel > 75) {
-      dispatch(zoomAction(zoomLevel - 10))
+      dispatch({ type: 'ZOOM', payload: zoomLevel - 10 })
     }
   }
 

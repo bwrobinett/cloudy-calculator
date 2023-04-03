@@ -1,14 +1,18 @@
 // ========================================
 // REDUCERS
 
-import { CalculatorAction, CalculatorState, CopyToInputAction } from './types'
+import {
+  AnyCalculatorAction,
+  CalculatorActionMap,
+  CalculatorState,
+} from './types'
 
 /**
  * Generates a new calculator state
  */
 export function calculatorReducer(
   state: CalculatorState = initialState(),
-  action: CalculatorAction
+  action: AnyCalculatorAction
 ): CalculatorState {
   switch (action.type) {
     // Initialize calculator
@@ -109,7 +113,7 @@ function clearOutputHistory(state: CalculatorState): CalculatorState {
  */
 function copyToInput(
   state: CalculatorState,
-  action: CopyToInputAction
+  action: CalculatorActionMap['CopyToInputAction']
 ): CalculatorState {
   const { text } = action.payload
   let { inputSelectionStart, inputSelectionEnd, resultHistory } = state

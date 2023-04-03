@@ -1,15 +1,10 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import { Dispatch, configureStore } from '@reduxjs/toolkit'
+import { AnyCalculatorAction } from './calculator'
 import { calculatorReducer } from './calculator/reducers'
 
 export const store = configureStore({
   reducer: calculatorReducer,
 })
 
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = Dispatch<AnyCalculatorAction>
 export type RootState = ReturnType<typeof store.getState>
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->
