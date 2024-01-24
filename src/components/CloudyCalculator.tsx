@@ -8,13 +8,11 @@ import {
   selectZoomLevel,
 } from '../calculator'
 import {
-  convertBaseCalculator,
   mathJsCalculator,
   mathJsCAS,
   mathJsParser,
   resetVariables,
   specialCommands,
-  tinyColorCalculator,
 } from '../calculators'
 
 import { calculatorStorage } from './calculatorStorage'
@@ -28,8 +26,8 @@ import { useCalculatorDispatch } from './useCalculatorDispatch'
 initCalculator({
   specialCommands,
   mathJsCalculator,
-  convertBaseCalculator,
-  tinyColorCalculator,
+  // convertBaseCalculator,
+  // tinyColorCalculator,
   mathJsCAS,
 })
 
@@ -63,7 +61,7 @@ export const CloudyCalculator: FC = () => {
     calculatorStorage.get().then((state) => {
       if (state) {
         state.resultHistory.forEach((result) => {
-          const { input, output } = result
+          const { input } = result
 
           // Recreate variables and functions by revaluating inputs with equals signs in them
           if (input?.includes('=')) {
@@ -141,6 +139,7 @@ export const CloudyCalculator: FC = () => {
 
   // ========================================
   // HANDLERS
+  // ========================================
 
   // Clears all calculations
   const handleClear = () => {
@@ -179,7 +178,7 @@ export const CloudyCalculator: FC = () => {
                   <div id="headerWrapper" className="boxFlex0">
                     <div id="headerLinks">
                       <a
-                        href="http://code.google.com/p/chromey-calculator/wiki/Help"
+                        href="https://bwrobinett.github.io/cloudy-calculator/"
                         target="_tab"
                         id="googleCalcHelp"
                         className="headerLink"

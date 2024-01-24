@@ -1,6 +1,5 @@
 export * from './calculatorsCommon'
 export * from './convertBaseCalculator'
-export * from './googleCalculator'
 export * from './mathJsCalculator'
 export * from './miscCalculators'
 export * from './tinyColorCalculator'
